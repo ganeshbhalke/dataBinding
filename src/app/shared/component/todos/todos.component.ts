@@ -30,8 +30,26 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild ('producName')pn!:ElementRef
+
+searchProduct =this.pn
+
+
   onEdit(){
     this.isInEditMode=true
+
+     console.log('js');
+    
+   let todoObj : Itodo = {
+    todoItem:  this.todosItemRef.nativeElement.value,
+    todoId: Date.now().toString()
+    }
+
+   this.todosItemRef.nativeElement.value=todoObj
+
+    console.log(todoObj);
+  
+    this.todosItemRef.nativeElement.value=''
   }
 
   todoSub(){

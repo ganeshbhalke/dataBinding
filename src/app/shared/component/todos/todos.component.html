@@ -6,11 +6,13 @@
                     <div class="from-group">
                         <!-- <label for="todoItem" >TodoItem</label> -->
                          <h3 class="text-center">{{isInEditMode ? 'Update Todo' : 'Add Todo'}}</h3>
-                        <input type="text" class="form-control" name="todoItem" id="todoItem" #todosItem>
+                        <input [(ngModel)]="searchProduct" #producName type="text" class="form-control" name="todoItem" id="todoItem" #todosItem>
                     </div>
+                      
+                    <p *ngIf="searchProduct" class="alert alert-info mt-3 ">{{searchProduct}}</p>
 
-                        <button class="btn btn-sm btn-primary w-100 mt-5" *ngIf=" !isInEditMode" (click)="todoSub()">Add Todos</button>
-                        <button class="btn btn-sm btn-success w-100 mt-5" *ngIf="isInEditMode">Update Todos</button>
+                        <button class="btn btn-sm btn-primary w-100 mt-5"  *ngIf=" !isInEditMode" (click)="todoSub()">Add Todos</button>
+                        <button class="btn btn-sm btn-success w-100 mt-5" *ngIf="isInEditMode"  >Update Todos</button>
 
                 </div>
             </div>
