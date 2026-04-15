@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="from-group">
+                        <!-- <label for="todoItem" >TodoItem</label> -->
+                         <h3 class="text-center">{{isInEditMode ? 'Update Todo' : 'Add Todo'}}</h3>
+                        <input type="text" class="form-control" name="todoItem" id="todoItem">
+                    </div>
+
+                        <button class="btn btn-sm btn-primary w-100 mt-5" *ngIf=" !isInEditMode">Add Todos</button>
+                        <button class="btn btn-sm btn-success w-100 mt-5" *ngIf="isInEditMode">Update Todos</button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-7">
+            <ul class="list-group mt-4">
+                <li class="list-group-item d-flex justify-content-between " *ngFor="let todos of todoArr">
+                    <h3>{{todos.todoItem}}</h3>
+                    <div>
+                        <button class="btn btn-sm btn-outline-primary mr-2" (click)="onEdit()">Edit</button>
+                        <button class="btn btn-sm btn-outline-danger">Remove</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
