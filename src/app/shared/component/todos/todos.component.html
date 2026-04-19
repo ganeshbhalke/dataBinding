@@ -1,193 +1,36 @@
-<p class="gana1">TODO TASK Five TImes</p>
-<h1 class="text-center mt-2">TASK-1</h1>
-<div class="container">
+<body>
+    <div class="container">
     <div class="row">
-        <div class="col-5">
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="from-group">
-                        <!-- <label for="todoItem" >TodoItem</label> -->
-                         <h3 class="text-center">{{isInEditMode ? 'Update Todo' : 'Add Todo'}}</h3>
-                        <input [(ngModel)]="searchProduct" #producName type="text" class="form-control" name="todoItem" id="todoItem" #todosItem>
-                    </div>
-                      
-                    <p *ngIf="searchProduct" class="alert alert-info mt-3 ">{{searchProduct}}</p>
-                        <div class="card-footer  d-flex justify-content-between text-center">
-                        <button class="btn btn-sm btn-primary w-100 mt-5"  *ngIf=" !isInEditMode" (click)="todoSub()">Add Todos</button>
-                        <button class="btn btn-sm btn-success w-100 mt-5" *ngIf="isInEditMode" (click)="onUpdate()" >Update Todos</button>
-
-                </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-7">
-            <ul class="list-group mt-4" *ngIf="todoArr.length > 0; else noTodos">
-                <li class="list-group-item d-flex justify-content-between mb-3 gana" *ngFor="let todos of todoArr">
-                    <h3>{{todos.todoItem}}</h3>
-                    <div>
-                        <button class="btn btn-sm btn-outline-primary mr-2" (click)="onEdit(todos)">Edit</button>
-                        <button class="btn btn-sm btn-outline-danger" (click)="onRemove(todos.todoId)">Remove</button>
-                    </div>
-                </li>
-            </ul>
-            <ng-template #noTodos>
-                <p class="alert alert-info">
-                    NO Todos Added Yet !!!
-                </p>
-            </ng-template>
-        </div>
-    </div>
-</div>
-
-
-<h1 class="text-center mt-5">TASK 2</h1>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="form-group">
-                        <h2 class="text-center">{{isInEditMode ? 'Update Todo' : 'Add Todo'}}</h2>
-                        <input [(ngModel)]="searchFruit" #FruitName type="text" class="form-control" name="fruitItem" id="fruitItem" #fruitsItem>
-
-                    </div>
-
-                   <p *ngIf="searchFruit" class="alert alert-danger mt-3">{{searchFruit}}</p>
-                    <button class="btn btn-primary  btn-sm  w-100 mt-4" *ngIf="!isInEditMode" (click)="onfruits()">ADD FRUITS</button>
-                    <button class="btn btn-danger btn-sm  w-100 mt-4" *ngIf="isInEditMode" (click)="onUudate()">UPDATE FRUITS</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-7">
-            <ul class="list-group mt-4" *ngIf="todoArr1.length > 0; else noTodos">
-                <li class="list-group-item d-flex justify-content-between mb-3" *ngFor="let gana of todoArr1">
-                    <h2>{{gana.todoItem}}</h2>
-                    <div>
-                        <button class="btn btn-outline-primary mr-2 btn-sm" (click)="onEditt(gana)">EDIT</button>
-                        <button class="btn btn-outline-warning btn-sm" (click)="onRemoved(gana.todoId)">REMOVE</button>
-                    </div>
-
-                </li>
-            </ul>
-            <ng-template #noTodos>
-                <p class="alert alert-info">
-                    NO Todos Added Yet !!!
-                </p>
-            </ng-template>
-        </div>
-    </div>
-</div>
-
-
-<h1 class="text-center mt-5">TASK 3</h1>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="card mt-3">
                 <div class="card-body">
                     <div class="form-group">
-                        <h3 class="text-center">{{isInEditMode ? 'Upadte cricketer' : 'Add Cricketers'}}</h3>
-                        <input [(ngModel)]="searchBooks" #BookName  type="text" class="form-control" name="Books" id="Books" #Bookes>
+                        <h2 class="text-center">{{isInEditMode ? 'UPDATE TODO' :'ADD TODO'}}</h2>
+                        <input [(ngModel)]="searchTodo" #TodoName type="text" class="form-control" name="todoItem" #todoItems>
                     </div>
-                    <p  *ngIf="searchBooks" class="alert alert-warning mt-3">{{searchBooks}}</p>
-                   <button class="btn btn-primary btn-sm w-100" *ngIf="!isInEditMode" (click)="onbooks()">ADD Cricketr </button>
-                   <button class="btn btn-success btn-sm w-100" *ngIf="isInEditMode" (click)="onUpPdate()">UPDATE Book</button>
+                    <p *ngIf="searchTodo" class="alert alert-success mt-3">{{searchTodo}}</p>
+                    <button class="btn btn-primary btn-sm w-100" *ngIf="!isInEditMode" (click)="ontodo()">ADD TODO</button>
+                    <button class="btn btn-warning btn-sm w-100" *ngIf="isInEditMode" (click)="onupdate()">UPDATE TODO</button>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-7">
-            <ul class="list-group mt-3" *ngIf="todoArr2.length > 0; else noTodos">
-                <li class="list-group-item d-flex justify-content-between gana mb-3" *ngFor="let gana1 of todoArr2">
-                    <h3>{{gana1.todoItem}}</h3>
+        <div class="col-md-6">
+            <ul class="list-group mt-2" *ngIf="todoArr.length > 0; else noTodos">
+                <li class="list-group-item d-flex justify-content-between mt-2" *ngFor="let gana of todoArr" >
+                    <h3>{{gana.todoItem}}</h3>
                     <div>
-                        <button class="btn btn-outline-primary btn-sm mr-3" (click)="onEdiet(gana1)">EDIT</button>
-                        <button class="btn btn-outline-warning btn-sm " (click)="onRemoveed(gana1.todoId)">Remove</button>
+                        <button class="btn btn-outline-light btn-sm mr-3" (click)="onEdit(gana)">EDIT</button>
+                        <button class="btn btn-outline-warning btn-sm mr-3"  (click)="onRemove(gana.todoId)">REMOVE</button>
                     </div>
 
-
-                </li>
-
-            </ul>
-            <ng-template #noTodos>
-                <p class="alert alert-info">
-                    NO Todos Added Yet !!!
-                </p>
-            </ng-template>
-        </div>
-    </div>
-</div>
-
-<h1 class="text-center mt-5">TASK 4</h1>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card mt-3">
-                <div class="card-body">
-                  <div class="form-group">
-                    <h1 class="text-center">{{isInEditMode ? 'Update Todo':'Add Flowers'}}</h1>
-                    <input [(ngModel)]="searchFlowers" #FlowerName type="text" class="form-control" name="Flowers" id="Flowers" #Flowerrs>
-                  </div>
-                  <p *ngIf="searchFlowers" class="alert alert-success">{{searchFlowers}}</p>
-                  <button class="btn btn-primary btn-sm w-100 " *ngIf="!isInEditMode" (click)="onAddtodo()">ADD Flower</button>
-                  <button class="btn btn-danger btn-sm w-100" *ngIf="isInEditMode" (click)="onUpDate()">UPDATE Flower</button>
-                </div>
-            </div>
-        </div>
-     <div class="col-md-7">
-         <ul class="list-group mt-3" *ngIf="todoArr3.length > 0; else noTodos">
-            <li class="list-group-item  d-flex justify-content-between gnn mb-2 " *ngFor="let gana2 of todoArr3">
-                <h4>{{gana2.todoItem}}</h4>
-                <div>
-                    <button class="btn btn-outline-primary btn-sm mr-3" (click)="onEdiit(gana2)">EDIT</button>
-                    <button class="btn btn-outline-warning btn-sm " (click)="onRemoveid(gana2.todoId)">REMOVE</button>
-                </div>
-            </li>
-         </ul>
-         <ng-template #noTodos>
-                <p class="alert alert-info">
-                    NO Todos Added Yet !!!
-                </p>
-            </ng-template>
-     </div>
-    </div>
-</div>
-
-
-
-<h1 class="text-center mt-3">TASK 5</h1>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <div class="form-group">
-                      <h1 class="text-center">{{isInEditMode ? 'Update Mobile' :'Add Mobile'}}</h1>
-                        <input [(ngModel)]="searchMobile" #MobileName type="text" class="form-control" name="mobile" id="mobile" #Mobiles>
-                    </div>
-                    <p *ngIf="searchMobile" class="alert alert-warning">{{searchMobile}}</p>
-                    <button class="btn btn-primary btn-sm w-100 "*ngIf="!isInEditMode" (click)="onAddMobile()">ADD MOBILE</button>
-                    <button class="btn btn-warning btn-sm w-100 " *ngIf="isInEditMode" (click)="onUpDAte()">UPDATE MOBILE</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-7">
-            <ul class="list-group mt-3" *ngIf="todoArr4.length > 0; else noTodos">
-                <li class="list-group-item d-flex justify-content-between text-center ganesh1 mb-3" *ngFor="let ganesh of todoArr4">
-               <h3>{{ganesh.todoItem}}</h3>
-               <div>
-                <button class="btn btn-outline-primary btn-sm mr-3" (click)="onEDit(ganesh)">EDIT</button>
-                <button class="btn btn-outline-danger btn-sm " (click)="onRemoves(ganesh.todoId)">REMOVE</button>
-               </div>
                 </li>
             </ul>
             <ng-template #noTodos>
-                <p class="alert alert-info">
-                    NO Todos Added Yet !!!
-                </p>
+                <p class="alert alert-info">no Added Todos Yet!!</p>
+
             </ng-template>
+
         </div>
     </div>
 </div>
+</body>
